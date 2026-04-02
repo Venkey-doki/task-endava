@@ -1,0 +1,243 @@
+{
+	"users": [
+		{
+			"id": "u1",
+			"email": "admin@example.com",
+			"password": "admin@pass",
+			"name": "Admin User",
+			"settings": {
+				"hourly_limit": 500,
+				"hourly_used": 450,
+				"smtp": {
+					"host": "smtp.mailgun.org",
+					"port": 587,
+					"username": "postmaster@sandbox.mailgun.org"
+				}
+			}
+		}
+	],
+
+	"campaigns": [
+		{
+			"id": "c1",
+			"userId": "u1",
+			"name": "Welcome Series Q3",
+			"subject": "Welcome to Velo! Let's get started...",
+			"status": "active",
+			"total_recipients": 1200,
+			"emails_sent": 450,
+			"emails_failed": 5,
+			"emails_pending": 745
+		},
+		{
+			"id": "c2",
+			"userId": "u1",
+			"name": "Inactive Users Follow-up",
+			"subject": "We've missed you! Here's something special...",
+			"status": "paused",
+			"total_recipients": 3400,
+			"emails_sent": 3400,
+			"emails_failed": 0,
+			"emails_pending": 0
+		},
+		{
+			"id": "c3",
+			"userId": "u1",
+			"name": "Product Launch - Early Access",
+			"subject": "Be the first to try our new features!",
+			"status": "completed",
+			"total_recipients": 850,
+			"emails_sent": 842,
+			"emails_failed": 8,
+			"emails_pending": 0
+		},
+		{
+			"id": "c4",
+			"userId": "u1",
+			"name": "Spring Sale Blast",
+			"subject": "Spring into Savings! Exclusive Offers Inside",
+			"status": "active",
+			"total_recipients": 2000,
+			"emails_sent": 1200,
+			"emails_failed": 10,
+			"emails_pending": 790
+		},
+		{
+			"id": "c5",
+			"userId": "u1",
+			"name": "Feedback Request",
+			"subject": "Tell Us What You Think!",
+			"status": "paused",
+			"total_recipients": 950,
+			"emails_sent": 500,
+			"emails_failed": 2,
+			"emails_pending": 448
+		},
+		{
+			"id": "c6",
+			"userId": "u1",
+			"name": "Holiday Greetings",
+			"subject": "Happy Holidays from Our Team!",
+			"status": "completed",
+			"total_recipients": 1800,
+			"emails_sent": 1795,
+			"emails_failed": 5,
+			"emails_pending": 0
+		}
+	],
+
+	"scheduled_emails": [
+		{
+			"id": "se1",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "john.smith@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-16T09:15:00Z"
+		},
+		{
+			"id": "se2",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "olive@jmail.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-17T08:15:00Z"
+		},
+		{
+			"id": "se3",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user1_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T09:00:00Z"
+		},
+		{
+			"id": "se4",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user2_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T10:00:00Z"
+		},
+		{
+			"id": "se5",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user3_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T11:00:00Z"
+		},
+		{
+			"id": "se6",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user4_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T12:00:00Z"
+		},
+		{
+			"id": "se7",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user5_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T13:00:00Z"
+		},
+		{
+			"id": "se8",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user6_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T14:00:00Z"
+		},
+		{
+			"id": "se9",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "user7_c1@example.com",
+			"status": "scheduled",
+			"scheduled_time": "2026-03-18T15:00:00Z"
+		}
+    
+	],
+
+	"sent_emails": [
+		{
+			"id": "sent1",
+			"campaignId": "c3",
+			"userId": "u1",
+			"recipient_email": "sarah.wilson@example.com",
+			"status": "success",
+			"sent_at": "2026-03-15T10:00:00Z"
+		},
+		{
+			"id": "sent2",
+			"campaignId": "c3",
+			"userId": "u1",
+			"recipient_email": "support@customer.com",
+			"status": "failed",
+			"sent_at": "2026-03-15T10:05:00Z",
+			"error_message": "SMTP Connection Timeout"
+		},
+		{
+			"id": "sent3",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent1_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T10:00:00Z"
+		},
+		{
+			"id": "sent4",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent2_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T11:00:00Z"
+		},
+		{
+			"id": "sent5",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent3_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T12:00:00Z"
+		},
+		{
+			"id": "sent6",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent4_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T13:00:00Z"
+		},
+		{
+			"id": "sent7",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent5_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T14:00:00Z"
+		},
+		{
+			"id": "sent8",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent6_c1@example.com",
+			"status": "failed",
+			"sent_at": "2026-03-16T15:00:00Z",
+			"error_message": "Mailbox full"
+		},
+		{
+			"id": "sent9",
+			"campaignId": "c1",
+			"userId": "u1",
+			"recipient_email": "sent7_c1@example.com",
+			"status": "success",
+			"sent_at": "2026-03-16T16:00:00Z"
+		}
+	]
+}
+
+

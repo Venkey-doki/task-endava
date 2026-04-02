@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Profile & Settings</title>
+    <meta name="description" content="Manage your Velo profile, SMTP settings, and account preferences." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Velo</div>
+            
+            <div class="sidebar-user" title="Logged in user">
+                <div class="sidebar-avatar">
+                    <svg width="36" height="36" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="18" fill="var(--bg-tertiary)" />
+                        <circle cx="18" cy="14" r="6" fill="var(--text-muted)" />
+                        <path d="M6 32c0-6.63 5.37-10 12-10s12 3.37 12 10" fill="var(--text-muted)" />
+                    </svg>
+                </div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name auth-user-name">User</div>
+                    <div class="sidebar-user-email auth-user-email">user@email.com</div>
+                </div>
+            </div>
+            
+            <a href="compose.html"><button class="btn-compose" id="composeSidebarBtn">
+                <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">add</span>
+                New Campaign
+            </button></a>
+
+            <div class="sidebar-section-title">Menu</div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item" id="navDashboard">
+                    <a href="dashboard.html">
+                        <span class="material-icons-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-item" id="navCompose">
+                    <a href="compose.html">
+                        <span class="material-icons-outlined">edit_note</span>
+                        Compose
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-item active" id="navProfile">
+                    <a href="profile.html">
+                        <span class="material-icons-outlined">person</span>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <label class="theme-toggle" id="themeToggleLabel">
+                    <span class="theme-toggle-label">
+                        <span class="material-icons-outlined">dark_mode</span>
+                        Dark Mode
+                    </span>
+                    <div class="theme-toggle-switch">
+                        <input type="checkbox" class="theme-toggle-input" id="themeToggle" />
+                        <span class="theme-toggle-slider"></span>
+                    </div>
+                </label>
+                <button class="sidebar-bottom-item btn-logout" id="logoutBtn">
+                    <span class="material-icons-outlined">logout</span>
+                    Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="profile-header animate-in">
+                <a href="dashboard.html" class="back-link">
+                    <span class="material-icons-outlined">arrow_back</span>
+                </a>
+                <h1 class="page-header" style="margin: 0;">Profile & Settings</h1>
+            </div>
+
+            <div class="page-content animate-in" style="animation-delay: 100ms;">
+
+                <!-- Account Stats -->
+                <div class="profile-section">
+                    <div class="profile-section-icon">
+                        <span class="material-icons-outlined">insights</span>
+                    </div>
+                    <h2 class="profile-section-title">Account Overview</h2>
+                    <div class="profile-stats-grid">
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" id="profileStatCampaigns">0</div>
+                            <div class="profile-stat-label">Total Campaigns</div>
+                        </div>
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" style="color: var(--green-600);" id="profileStatActive">0</div>
+                            <div class="profile-stat-label">Active</div>
+                        </div>
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" id="profileStatCompleted">0</div>
+                            <div class="profile-stat-label">Completed</div>
+                        </div>
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" id="profileStatEmails">0</div>
+                            <div class="profile-stat-label">Total Emails</div>
+                        </div>
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" style="color: var(--green-600);" id="profileStatSent">0</div>
+                            <div class="profile-stat-label">Sent</div>
+                        </div>
+                        <div class="profile-stat-card">
+                            <div class="profile-stat-value" style="color: var(--red-500);" id="profileStatFailed">0</div>
+                            <div class="profile-stat-label">Failed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Info -->
+                <div class="profile-section">
+                    <div class="profile-section-icon">
+                        <span class="material-icons-outlined">person</span>
+                    </div>
+                    <h2 class="profile-section-title">Profile Information</h2>
+                    <div class="profile-form">
+                        <div class="profile-form-row">
+                            <label class="profile-label">Full Name</label>
+                            <input type="text" class="profile-input" id="profileName" placeholder="Your name" />
+                        </div>
+                        <div class="profile-form-row">
+                            <label class="profile-label">Email Address</label>
+                            <input type="email" class="profile-input" id="profileEmail" placeholder="your@email.com" />
+                        </div>
+                        <div class="profile-form-row" style="display: flex; gap: 32px;">
+                            <div>
+                                <span class="profile-meta-label">Member since</span>
+                                <span class="profile-meta-value" id="memberSince">—</span>
+                            </div>
+                            <div>
+                                <span class="profile-meta-label">Last updated</span>
+                                <span class="profile-meta-value" id="lastUpdated">—</span>
+                            </div>
+                        </div>
+                        <button class="btn-save" id="saveProfileBtn">
+                            <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">save</span>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Change Password -->
+                <!-- <div class="profile-section">
+                    <div class="profile-section-icon">
+                        <span class="material-icons-outlined">lock</span>
+                    </div>
+                    <h2 class="profile-section-title">Change Password</h2>
+                    <div class="profile-form">
+                        <div class="profile-form-row">
+                            <label class="profile-label">Current Password</label>
+                            <input type="password" class="profile-input" id="currentPassword" placeholder="Enter current password" />
+                        </div>
+                        <div class="profile-form-row">
+                            <label class="profile-label">New Password</label>
+                            <input type="password" class="profile-input" id="newPassword" placeholder="Enter new password" />
+                        </div>
+                        <div class="profile-form-row">
+                            <label class="profile-label">Confirm New Password</label>
+                            <input type="password" class="profile-input" id="confirmPassword" placeholder="Confirm new password" />
+                        </div>
+                        <button class="btn-save" id="changePasswordBtn">
+                            <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">key</span>
+                            Update Password
+                        </button>
+                    </div>
+                </div> -->
+
+                <!-- SMTP Configurations -->
+                <div class="profile-section">
+                    <div class="profile-section-icon">
+                        <span class="material-icons-outlined">dns</span>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <h2 class="profile-section-title" style="margin-bottom: 0;">SMTP Configurations</h2>
+                        <button class="btn-add-smtp" id="addSmtpBtn">
+                            <span class="material-icons-outlined" style="font-size: 16px;">add</span>
+                            Add Configuration
+                        </button>
+                    </div>
+
+                    <!-- SMTP Add Form (hidden by default) -->
+                    <div id="smtpForm" style="display: none;" class="smtp-form-card">
+                        <div class="smtp-form-grid">
+                            <div class="profile-form-row">
+                                <label class="profile-label">Configuration Name *</label>
+                                <input type="text" class="profile-input" id="smtpName" placeholder="e.g., Marketing SMTP" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">SMTP Host *</label>
+                                <input type="text" class="profile-input" id="smtpHost" placeholder="smtp.gmail.com" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">Port</label>
+                                <input type="number" class="profile-input" id="smtpPort" value="587" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">Username *</label>
+                                <input type="text" class="profile-input" id="smtpUsername" placeholder="your@email.com" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">Password</label>
+                                <input type="password" class="profile-input" id="smtpPassword" placeholder="SMTP password" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">From Email *</label>
+                                <input type="email" class="profile-input" id="smtpFromEmail" placeholder="noreply@company.com" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">From Name</label>
+                                <input type="text" class="profile-input" id="smtpFromName" placeholder="Marketing Team" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">Hourly Limit</label>
+                                <input type="number" class="profile-input" id="smtpHourlyLimit" value="100" />
+                            </div>
+                            <div class="profile-form-row">
+                                <label class="profile-label">Daily Limit</label>
+                                <input type="number" class="profile-input" id="smtpDailyLimit" value="1000" />
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 16px;">
+                            <button class="btn-save" id="saveSmtpBtn">
+                                <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">save</span>
+                                Save Configuration
+                            </button>
+                            <button class="btn-outline-sm" onclick="document.getElementById('smtpForm').style.display='none'">Cancel</button>
+                        </div>
+                    </div>
+
+                    <!-- Existing configs list -->
+                    <div id="smtpConfigsList">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Danger Zone -->
+                <!-- <div class="profile-section danger-zone">
+                    <div class="profile-section-icon" style="background: var(--red-50); color: var(--red-500);">
+                        <span class="material-icons-outlined">warning</span>
+                    </div>
+                    <h2 class="profile-section-title" style="color: var(--red-500);">Danger Zone</h2>
+                    <p style="color: var(--text-tertiary); margin-bottom: 16px;">
+                        Deleting your account will permanently remove all your campaigns, scheduled emails, SMTP configurations, and data. This action cannot be undone.
+                    </p>
+                    <button class="btn-danger" id="deleteAccountBtn">
+                        <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">delete_forever</span>
+                        Delete Account
+                    </button>
+                    <div id="deleteConfirmArea" style="display: none; margin-top: 16px;">
+                        <p style="color: var(--red-500); font-weight: 600; margin-bottom: 8px;">Type <strong>DELETE</strong> to confirm:</p>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <input type="text" class="profile-input" id="deleteConfirmInput" placeholder="DELETE" style="max-width: 200px; margin-bottom: 0;" />
+                            <button class="btn-danger" id="confirmDeleteBtn" style="padding: 10px 20px;">Confirm</button>
+                            <button class="btn-outline-sm" id="cancelDeleteBtn">Cancel</button>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

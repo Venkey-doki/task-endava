@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Create Campaign</title>
+    <meta name="description" content="Create and schedule a new email campaign with Velo." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Velo</div>
+            
+            <div class="sidebar-user" title="Logged in user">
+                <div class="sidebar-avatar">
+                    <svg width="36" height="36" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="18" fill="var(--bg-tertiary)" />
+                        <circle cx="18" cy="14" r="6" fill="var(--text-muted)" />
+                        <path d="M6 32c0-6.63 5.37-10 12-10s12 3.37 12 10" fill="var(--text-muted)" />
+                    </svg>
+                </div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name auth-user-name">User</div>
+                    <div class="sidebar-user-email auth-user-email">user@email.com</div>
+                </div>
+            </div>
+            
+            <a href="compose.html"><button class="btn-compose" style="background: var(--green-600); color: #fff;">
+                <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">add</span>
+                New Campaign
+            </button></a>
+
+            <div class="sidebar-section-title">Menu</div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item" id="navDashboard">
+                    <a href="dashboard.html">
+                        <span class="material-icons-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-nav-item active" id="navCompose">
+                    <a href="compose.html">
+                        <span class="material-icons-outlined">edit_note</span>
+                        Compose
+                    </a>
+                </li>
+                <li class="sidebar-nav-item" id="navProfile">
+                    <a href="profile.html">
+                        <span class="material-icons-outlined">person</span>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <label class="theme-toggle">
+                    <span class="theme-toggle-label">
+                        <span class="material-icons-outlined">dark_mode</span>
+                        Dark Mode
+                    </span>
+                    <div class="theme-toggle-switch">
+                        <input type="checkbox" class="theme-toggle-input" />
+                        <span class="theme-toggle-slider"></span>
+                    </div>
+                </label>
+                <button class="sidebar-bottom-item btn-logout">
+                    <span class="material-icons-outlined">logout</span>
+                    Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main-content">
+            <div class="topbar">
+                <a href="dashboard.html" class="btn-back" style="margin-right: 8px;" title="Back to Dashboard">
+                    <span class="material-icons-outlined">arrow_back</span>
+                </a>
+                <span class="compose-title">Create New Campaign</span>
+            </div>
+
+            <div class="page-content" style="max-width: 800px;">
+                <!-- Campaign Name -->
+                <div class="compose-section animate-in">
+                    <div class="compose-section-title">
+                        <span class="material-icons-outlined">campaign</span>
+                        Campaign Details
+                    </div>
+                    <div class="compose-field" style="border: none; padding: 0; margin-bottom: 12px;">
+                        <div class="compose-field-label">Name</div>
+                        <input type="text" id="campaignName" placeholder="e.g., Welcome Series Q3" style="background: transparent;" />
+                    </div>
+                    <div class="compose-field" style="border: none; padding: 0;">
+                        <div class="compose-field-label">Subject</div>
+                        <input type="text" id="campaignSubject" placeholder="Email subject line..." style="background: transparent;" />
+                    </div>
+                </div>
+
+                <!-- Email Body -->
+                <div class="compose-section animate-in" style="animation-delay: 60ms;">
+                    <div class="compose-section-title">
+                        <span class="material-icons-outlined">edit</span>
+                        Email Content
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div class="compose-toolbar">
+                        <button class="toolbar-btn" data-cmd="bold" title="Bold">
+                            <span class="material-icons-outlined">format_bold</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="italic" title="Italic">
+                            <span class="material-icons-outlined">format_italic</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="underline" title="Underline">
+                            <span class="material-icons-outlined">format_underlined</span>
+                        </button>
+                        <div class="toolbar-sep"></div>
+                        <button class="toolbar-btn" data-cmd="strikeThrough" title="Strikethrough">
+                            <span class="material-icons-outlined">strikethrough_s</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="insertUnorderedList" title="Bullet List">
+                            <span class="material-icons-outlined">format_list_bulleted</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="insertOrderedList" title="Numbered List">
+                            <span class="material-icons-outlined">format_list_numbered</span>
+                        </button>
+                        <div class="toolbar-sep"></div>
+                        <button class="toolbar-btn" data-cmd="justifyLeft" title="Align Left">
+                            <span class="material-icons-outlined">format_align_left</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="justifyCenter" title="Align Center">
+                            <span class="material-icons-outlined">format_align_center</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="justifyRight" title="Align Right">
+                            <span class="material-icons-outlined">format_align_right</span>
+                        </button>
+                        <div class="toolbar-sep"></div>
+                        <button class="toolbar-btn" data-cmd="undo" title="Undo">
+                            <span class="material-icons-outlined">undo</span>
+                        </button>
+                        <button class="toolbar-btn" data-cmd="redo" title="Redo">
+                            <span class="material-icons-outlined">redo</span>
+                        </button>
+                    </div>
+
+                    <!-- Editor -->
+                    <div
+                        class="compose-editor"
+                        contenteditable="true"
+                        data-placeholder="Compose your email body here... Supports rich text formatting."
+                        id="campaignBody"
+                    ></div>
+                </div>
+
+                <!-- CSV Upload -->
+                <div class="compose-section animate-in" style="animation-delay: 120ms;">
+                    <div class="compose-section-title">
+                        <span class="material-icons-outlined">upload_file</span>
+                        Recipients (CSV Upload)
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px;">
+                        Upload a CSV file with an <strong>"emails"</strong> column containing recipient email addresses.
+                    </p>
+                    
+                    <input type="file" id="csvFileInput" accept=".csv" style="display: none;" />
+                    
+                    <div class="csv-upload-area" id="csvUploadArea">
+                        <span class="material-icons-outlined csv-upload-icon">cloud_upload</span>
+                        <div class="csv-upload-text">Click or drag a CSV file here</div>
+                        <div class="csv-upload-hint">Supports .csv files with an "emails" column</div>
+                    </div>
+
+                    <div class="csv-preview" id="csvPreview" style="display: none;">
+                        <div class="csv-preview-header">
+                            <span class="csv-preview-count" id="csvEmailCount">0 recipients loaded</span>
+                            <span class="csv-preview-clear" id="csvClearBtn">✕ Clear all</span>
+                        </div>
+                        <div class="csv-email-list" id="csvEmailList">
+                            <!-- Chips rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule -->
+                <div class="compose-section animate-in" style="animation-delay: 180ms;">
+                    <div class="compose-section-title">
+                        <span class="material-icons-outlined">event</span>
+                        Schedule
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-tertiary); margin-bottom: 16px;">
+                        Choose when your campaign should start sending emails.
+                    </p>
+                    <div class="schedule-row">
+                        <div class="schedule-group">
+                            <label class="schedule-label" for="scheduleDate">Date</label>
+                            <input type="date" class="schedule-input" id="scheduleDate" />
+                        </div>
+                        <div class="schedule-group">
+                            <label class="schedule-label" for="scheduleTime">Time</label>
+                            <input type="time" class="schedule-input" id="scheduleTime" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Button -->
+                <button class="btn-create-campaign animate-in" style="animation-delay: 240ms;" id="createCampaignBtn">
+                    <span class="material-icons-outlined">rocket_launch</span>
+                    Create & Schedule Campaign
+                </button>
+
+                <div style="height: 40px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Set default date to today and time to next hour
+        (function() {
+            const now = new Date();
+            const dateInput = document.getElementById('scheduleDate');
+            const timeInput = document.getElementById('scheduleTime');
+            
+            if (dateInput) {
+                dateInput.value = now.toISOString().split('T')[0];
+                dateInput.min = now.toISOString().split('T')[0];
+            }
+            if (timeInput) {
+                const nextHour = new Date(now.getTime() + 60 * 60 * 1000);
+                const hh = String(nextHour.getHours()).padStart(2, '0');
+                const mm = String(nextHour.getMinutes()).padStart(2, '0');
+                timeInput.value = `${hh}:${mm}`;
+            }
+        })();
+    </script>
+</body>
+</html>

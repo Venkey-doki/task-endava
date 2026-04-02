@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Login</title>
+    <meta name="description" content="Log in to your Velo email campaign dashboard." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-card animate-in">
+            <div style="text-align: center; margin-bottom: 8px;">
+                <a href="../index.html" style="font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--text-primary); letter-spacing: 2px;">Velo</a>
+            </div>
+            <h1>Welcome back</h1>
+            
+            <form id="loginForm">
+                <input
+                    id="loginEmail"
+                    class="login-input"
+                    type="email"
+                    placeholder="Email address"
+                    required
+                    autocomplete="email"
+                />
+                <input
+                    id="loginPassword"
+                    class="login-input"
+                    type="password"
+                    placeholder="Password"
+                    required
+                    autocomplete="current-password"
+                />
+                <button type="submit" class="btn-login" id="loginSubmitBtn">Log in</button>
+            </form>
+
+            <div style="font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px;">
+                Demo: admin@example.com / admin@pass
+            </div>
+
+            <div class="divider">or</div>
+            
+            <a href="signup.html" style="text-decoration: none;">
+                <button class="btn-google" style="background: var(--bg-primary); border-color: var(--border-primary);">
+                    Create an Account
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+</html>

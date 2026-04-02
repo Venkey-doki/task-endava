@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Dashboard</title>
+    <meta name="description" content="View and manage your email campaigns on the Velo dashboard." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Velo</div>
+            
+            <div class="sidebar-user" title="Logged in user">
+                <div class="sidebar-avatar">
+                    <svg width="36" height="36" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="18" fill="var(--bg-tertiary)" />
+                        <circle cx="18" cy="14" r="6" fill="var(--text-muted)" />
+                        <path d="M6 32c0-6.63 5.37-10 12-10s12 3.37 12 10" fill="var(--text-muted)" />
+                    </svg>
+                </div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name auth-user-name">User</div>
+                    <div class="sidebar-user-email auth-user-email">user@email.com</div>
+                </div>
+            </div>
+            
+            <a href="compose.html"><button class="btn-compose" id="composeSidebarBtn">
+                <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">add</span>
+                New Campaign
+            </button></a>
+
+            <div class="sidebar-section-title">Menu</div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item active" id="navDashboard">
+                    <a href="dashboard.html">
+                        <span class="material-icons-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-item" id="navCompose">
+                    <a href="compose.html">
+                        <span class="material-icons-outlined">edit_note</span>
+                        Compose
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-item" id="navProfile">
+                    <a href="profile.html">
+                        <span class="material-icons-outlined">person</span>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <label class="theme-toggle" id="themeToggleLabel">
+                    <span class="theme-toggle-label">
+                        <span class="material-icons-outlined">dark_mode</span>
+                        Dark Mode
+                    </span>
+                    <div class="theme-toggle-switch">
+                        <input type="checkbox" class="theme-toggle-input" id="themeToggle" />
+                        <span class="theme-toggle-slider"></span>
+                    </div>
+                </label>
+                <button class="sidebar-bottom-item btn-logout" id="logoutBtn">
+                    <span class="material-icons-outlined">logout</span>
+                    Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main-content">
+            <div class="topbar">
+                <div class="search-box">
+                    <span class="material-icons-outlined">search</span>
+                    <input type="text" placeholder="Search campaigns..." id="searchInput" />
+                </div>
+                <a href="compose.html" class="topbar-icon" title="New Campaign" id="newCampaignTopBtn">
+                    <span class="material-icons-outlined">add</span>
+                </a>
+            </div>
+
+            <h1 class="page-header">Your Campaigns</h1>
+
+            <div class="page-content animate-in">
+                <div class="campaigns-grid" id="campaignsGrid">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        // Search functionality
+        document.getElementById('searchInput')?.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            document.querySelectorAll('.campaign-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

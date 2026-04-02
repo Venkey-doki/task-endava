@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Campaign Details</title>
+    <meta name="description" content="View detailed campaign analytics and email delivery status." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="../js/theme.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Velo</div>
+            
+            <div class="sidebar-user" title="Logged in user">
+                <div class="sidebar-avatar">
+                    <svg width="36" height="36" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="18" fill="var(--bg-tertiary)" />
+                        <circle cx="18" cy="14" r="6" fill="var(--text-muted)" />
+                        <path d="M6 32c0-6.63 5.37-10 12-10s12 3.37 12 10" fill="var(--text-muted)" />
+                    </svg>
+                </div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name auth-user-name">User</div>
+                    <div class="sidebar-user-email auth-user-email">user@email.com</div>
+                </div>
+            </div>
+            
+            <a href="compose.html"><button class="btn-compose">
+                <span class="material-icons-outlined" style="font-size: 16px; vertical-align: middle; margin-right: 4px;">add</span>
+                New Campaign
+            </button></a>
+
+            <div class="sidebar-section-title">Menu</div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-item" id="navDashboard">
+                    <a href="dashboard.html">
+                        <span class="material-icons-outlined">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-item" id="navCompose">
+                    <a href="compose.html">
+                        <span class="material-icons-outlined">edit_note</span>
+                        Compose
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-item" id="navProfile">
+                    <a href="profile.html">
+                        <span class="material-icons-outlined">person</span>
+                        Profile
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-bottom">
+                <label class="theme-toggle">
+                    <span class="theme-toggle-label">
+                        <span class="material-icons-outlined">dark_mode</span>
+                        Dark Mode
+                    </span>
+                    <div class="theme-toggle-switch">
+                        <input type="checkbox" class="theme-toggle-input" />
+                        <span class="theme-toggle-slider"></span>
+                    </div>
+                </label>
+                <button class="sidebar-bottom-item btn-logout">
+                    <span class="material-icons-outlined">logout</span>
+                    Log Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main-content">
+            <div class="topbar">
+                <a href="dashboard.html" class="btn-back" style="margin-right: 8px;" title="Back to Dashboard">
+                    <span class="material-icons-outlined">arrow_back</span>
+                </a>
+                <div style="flex: 1; display: flex; align-items: center; gap: 12px;">
+                    <span id="detailCampaignName" style="font-size: 16px; font-weight: 600; color: var(--text-primary);">Loading...</span>
+                    <span id="detailCampaignStatus" class="status-badge"></span>
+                </div>
+            </div>
+
+            <div class="page-content animate-in">
+                <!-- Stats Row -->
+                <div class="detail-stats-row" style="margin-top: 12px;">
+                    <div class="stat-card">
+                        <div class="stat-card-icon total">
+                            <span class="material-icons-outlined">groups</span>
+                        </div>
+                        <div class="stat-card-value" id="statTotal">0</div>
+                        <div class="stat-card-label">Total Recipients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon sent">
+                            <span class="material-icons-outlined">check_circle</span>
+                        </div>
+                        <div class="stat-card-value" id="statSent" style="color: var(--green-600);">0</div>
+                        <div class="stat-card-label">Sent Successfully</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon failed">
+                            <span class="material-icons-outlined">error</span>
+                        </div>
+                        <div class="stat-card-value" id="statFailed" style="color: var(--red-500);">0</div>
+                        <div class="stat-card-label">Failed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon pending">
+                            <span class="material-icons-outlined">schedule</span>
+                        </div>
+                        <div class="stat-card-value" id="statPending" style="color: var(--orange-500);">0</div>
+                        <div class="stat-card-label">Pending</div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Campaign Progress</span>
+                        <span id="progressPct">0%</span>
+                    </div>
+                    <div class="progress-bg">
+                        <div class="progress-fill green" id="progressFill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Campaign Info Card -->
+                <div class="campaign-info-card">
+                    <div style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <span class="material-icons-outlined" style="font-size: 20px; color: var(--green-600);">info</span>
+                        Campaign Details
+                    </div>
+                    <div class="campaign-info-grid">
+                        <div>
+                            <div class="info-item-label">Subject</div>
+                            <div class="info-item-value" id="infoSubject">—</div>
+                        </div>
+                        <div>
+                            <div class="info-item-label">Status</div>
+                            <div class="info-item-value" id="infoStatus">—</div>
+                        </div>
+                        <div>
+                            <div class="info-item-label">Start Time</div>
+                            <div class="info-item-value" id="infoStartTime">—</div>
+                        </div>
+                        <div>
+                            <div class="info-item-label">Created At</div>
+                            <div class="info-item-value" id="infoCreatedAt">—</div>
+                        </div>
+                        <div>
+                            <div class="info-item-label">Delay Between Emails</div>
+                            <div class="info-item-value" id="infoDelay">—</div>
+                        </div>
+                        <div>
+                            <div class="info-item-label">Hourly Limit</div>
+                            <div class="info-item-value" id="infoHourlyLimit">—</div>
+                        </div>
+                        <div class="info-body-content">
+                            <div class="info-item-label" style="margin-bottom: 8px;">Email Body Content</div>
+                            <div class="compose-editor" id="infoBody" style="min-height: 80px; cursor: default; pointer-events: none;">—</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email List Tabs -->
+                <div style="font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 0; display: flex; align-items: center; gap: 8px; padding: 0 0 12px;">
+                    <span class="material-icons-outlined" style="font-size: 20px; color: var(--green-600);">list</span>
+                    Email Recipients
+                </div>
+
+                <div class="tabs-header" style="padding: 0; margin-bottom: 0;">
+                    <button class="tab-btn active" data-tab="emailsAll">All</button>
+                    <button class="tab-btn" data-tab="emailsSent">Sent</button>
+                    <button class="tab-btn" data-tab="emailsFailed">Failed</button>
+                    <button class="tab-btn" data-tab="emailsPending">Pending</button>
+                </div>
+
+                <div style="background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: var(--radius-md); overflow: hidden; margin-top: -1px;">
+                    <div id="emailsAll" class="tab-content active email-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <div id="emailsSent" class="tab-content email-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <div id="emailsFailed" class="tab-content email-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <div id="emailsPending" class="tab-content email-list">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/db.js"></script>
+    <script src="../js/toast.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/app.js"></script>
+</body>
+</html>

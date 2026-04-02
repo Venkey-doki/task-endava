@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velo — Production-Grade Email Scheduling & Campaign Platform</title>
+    <meta name="description" content="Velo is a production-grade email scheduling and delivery system. Schedule campaigns, enforce rate limits, track delivery, and manage audiences at scale." />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/landing.css" />
+    <script src="js/theme.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="animate-in">
+        <div class="nav-logo">Velo</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#architecture">How it works</a>
+            <a href="#cta">Get Started</a>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-theme-toggle" id="navThemeToggle" onclick="veloToggleTheme()" title="Toggle dark/light mode">
+                <span class="material-icons-outlined" id="navThemeIcon">dark_mode</span>
+            </button>
+            <a href="pages/login.html" class="btn-outline" id="navLoginBtn">Log in</a>
+            <a href="pages/signup.html" class="btn-primary" id="navSignupBtn">Sign up</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero animate-in" style="animation-delay: 100ms;">
+        <div class="hero-content">
+            <div class="badge">⚡ Persistent Email Scheduling</div>
+            <h1>Schedule, send, and track email campaigns at scale</h1>
+            <p>Velo is the modern email outreach platform with persistent scheduling, rate limiting, retry logic, and complete audit trails. Send thousands of emails without breaking a sweat.</p>
+            <div class="hero-actions">
+                <a href="pages/signup.html" class="btn-primary-nav" style="padding: 14px 32px; font-size: 16px;">Start for free</a>
+                <a href="pages/login.html" class="btn-outline-nav" style="padding: 14px 32px; font-size: 16px;">View Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="features-header">
+            <h2>Built for serious email campaigns</h2>
+            <p>Every feature designed around the needs of high-volume, reliable email delivery.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">schedule_send</span>
+                </div>
+                <h3 class="feature-title">Persistent Scheduling</h3>
+                <p class="feature-desc">Emails are stored in a persistent database, not just in-memory queues. Survive server restarts without losing a single scheduled email.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">speed</span>
+                </div>
+                <h3 class="feature-title">Rate Limiting</h3>
+                <p class="feature-desc">Built-in per-user hourly rate limits prevent spam and respect SMTP provider quotas. Automatically reschedules overflow to the next window.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">autorenew</span>
+                </div>
+                <h3 class="feature-title">Automatic Retries</h3>
+                <p class="feature-desc">Failed emails are automatically retried up to 3 times with exponential backoff. Track every attempt in a complete audit trail.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">upload_file</span>
+                </div>
+                <h3 class="feature-title">CSV Bulk Upload</h3>
+                <p class="feature-desc">Upload a CSV with thousands of recipient emails and schedule them all in one campaign. Our parser validates every email address automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">analytics</span>
+                </div>
+                <h3 class="feature-title">Real-time Campaign Tracking</h3>
+                <p class="feature-desc">Monitor sent, failed, and pending emails in real time. View campaign progress with beautiful dashboards and detailed per-email status.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <span class="material-icons-outlined">fingerprint</span>
+                </div>
+                <h3 class="feature-title">Idempotent Delivery</h3>
+                <p class="feature-desc">Unique idempotency keys prevent duplicate sends even during system restarts. Every email is sent exactly once — guaranteed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="architecture-header">
+            <h2>How Velo processes your campaigns</h2>
+            <p>An 8-table database architecture designed for reliability, auditability, and scale.</p>
+        </div>
+        <div class="arch-cards">
+            <div class="arch-card">
+                <div class="arch-card-number">1</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">person</span></div>
+                    <h3>User Authentication</h3>
+                    <p>Secure user accounts with OAuth support. Each user gets isolated campaigns, rate limits, and SMTP configurations.</p>
+                </div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-card-number">2</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">campaign</span></div>
+                    <h3>Campaign Creation</h3>
+                    <p>Define subject, body, recipients via CSV, and scheduling. Denormalized counters track sent/failed/pending in real time.</p>
+                </div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-card-number">3</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">email</span></div>
+                    <h3>Individual Email Tracking</h3>
+                    <p>Every email gets its own record with scheduled_time, status lifecycle (scheduled → queued → sent/failed), and attempt tracking.</p>
+                </div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-card-number">4</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">timer</span></div>
+                    <h3>Rate Limit Enforcement</h3>
+                    <p>Fixed hourly windows with atomic counters ensure users never exceed their SMTP provider's limits. Overflow auto-reschedules.</p>
+                </div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-card-number">5</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">receipt_long</span></div>
+                    <h3>Complete Audit Trail</h3>
+                    <p>Every send attempt is logged with SMTP response codes, duration, and error details. Supports debugging and compliance.</p>
+                </div>
+            </div>
+            <div class="arch-card">
+                <div class="arch-card-number">6</div>
+                <div class="arch-card-content">
+                    <div class="arch-card-icon"><span class="material-icons-outlined">dns</span></div>
+                    <h3>Multi-SMTP Support</h3>
+                    <p>Configure multiple sender accounts with encrypted credentials. Round-robin and failover strategies for reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+        <div class="cta-content">
+            <h2>Ready to send smarter?</h2>
+            <p>Create your first campaign in under 60 seconds. Upload your CSV, compose your email, set the schedule, and let Velo handle the rest.</p>
+            <a href="pages/signup.html" class="btn-primary-nav" style="padding: 16px 40px; font-size: 16px; background: #fff; color: #111827; display: inline-block;">Get Started for Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Velo</div>
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="#">Documentation</a>
+            <a href="#">Contact</a>
+        </div>
+        <div>&copy; 2026 Velo Inc.</div>
+    </footer>
+
+    <script src="js/scrollAnimation.js"></script>
+    <script>
+        // If user is already logged in, change nav buttons to dashboard and none
+        (function() {
+            try {
+                const session = sessionStorage.getItem('velo_session');
+                if (session) {
+                    const loginBtn = document.getElementById('navLoginBtn');
+                    const signupBtn = document.getElementById('navSignupBtn');
+                    if (loginBtn) { loginBtn.textContent = 'Dashboard'; loginBtn.href = 'pages/dashboard.html'; }
+                    if (signupBtn) { signupBtn.style.display = 'none'; }
+                }
+            } catch(e) {}
+        })();
+
+        // Sync theme toggle icon
+        function syncThemeIcon() {
+            const icon = document.getElementById('navThemeIcon');
+            if (icon) {
+                icon.textContent = (localStorage.getItem('velo_theme') === 'dark') ? 'dark_mode' : 'light_mode';
+            }
+        }
+        syncThemeIcon();
+
+        // Override veloToggleTheme to also update icon
+        const _origToggle = window.veloToggleTheme;
+        window.veloToggleTheme = function() {
+            _origToggle();
+            syncThemeIcon();
+        };
+    </script>
+</body>
+</html>
