@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ========== DASHBOARD RENDERING ==========
+// DASHBOARD RENDERING
 
 function renderDashboard() {
     const campaigns = getCampaigns();
